@@ -1,6 +1,5 @@
 import os
 import re
-import zc.buildout
 myos=os.uname()[0]
 
 def libxml2(options,buildout):
