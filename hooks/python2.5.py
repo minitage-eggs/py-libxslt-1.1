@@ -3,7 +3,6 @@ import re
 import zc.buildout
 myos=os.uname()[0]
 
-
 def libxml2(options,buildout):
     # patch Makefile
     pwd=os.getcwd()
@@ -28,6 +27,5 @@ def libxml2(options,buildout):
     os.system('make install')
     os.chdir(pwd)
     return None 
-
 
 # vim:set ts=4 sts=4 et  :
