@@ -1,0 +1,4 @@
+.*pyc
+parts
+\.installed.cfg
+bin
