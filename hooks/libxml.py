@@ -4,24 +4,23 @@ import shutil
 
 def install(options,buildout):
     """Installs only the python site-packages."""
-    pwd = options['location']
-    os.system("""
-              cd %s
-              cd python
-              make install""" % pwd)
+    cwd = os.getcwd()
+    #os.system("""
+    #          cd %s
+    #          cd python
+    #          make install""" % options['compile-directory'])
 
-    for d in 'share', 'bin':
+    for d in 'include', 'man', 'lib', 'share', 'bin':
         if os.path.exists(
-            os.path.join(pwd, d)):
+            os.path.join(options['location'], d)):
             shutil.rmtree(
-                os.path.join(pwd, d))
-
+                os.path.join(options['location'], d))
+    os.chdir(cwd)
 
 def libxml(options, buildout, version):
     """Patch Makefile to point to our site packages."""
-    pwd=options['compile-directory']
     MAKEFILE = os.path.join(
-        pwd,
+        options['compile-directory'],
         'python',
         'Makefile'
     )
@@ -44,7 +43,6 @@ def libxml(options, buildout, version):
     file = open(MAKEFILE,'w+')
     file.writelines(lines)
     file.close()
-    os.chdir(pwd)
 
 def libxml2_24(options,buildout):
     """Patch Makefile to point to our site packages."""
