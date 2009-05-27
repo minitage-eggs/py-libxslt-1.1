@@ -51,5 +51,7 @@ def libxml2_24(options,buildout):
 def libxml2_25(options,buildout):
     """Patch Makefile to point to our site packages."""
     libxml(options, buildout, '2.5')
-
+def libxml2_26(options,buildout):
+    """Patch Makefile to point to our site packages."""
+    libxml(options, buildout, '2.6')
 # vim:set ts=4 sts=4 et  :
